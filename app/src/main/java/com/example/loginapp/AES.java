@@ -77,7 +77,8 @@ public class AES {
         try
         {
             digest = MessageDigest.getInstance("MD5");
-            digest.update(s.getBytes(Charset.forName("US-ASCII")),0,s.length());
+            String s2 = s + "celtic sea salt";
+            digest.update(s2.getBytes(Charset.forName("US-ASCII")),0,s2.length());
             byte[] magnitude = digest.digest();
             BigInteger bi = new BigInteger(1, magnitude);
             String hash = String.format("%0" + (magnitude.length << 1) + "x", bi);
