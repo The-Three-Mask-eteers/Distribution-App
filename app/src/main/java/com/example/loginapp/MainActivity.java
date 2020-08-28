@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         public int getCount() {
             return fragmentList.size();
         }
+        /*String hello = "hello";
+       String hello2 = Enc*/
 
         void addFragmet(Fragment fragment) {
             fragmentList.add(fragment);
