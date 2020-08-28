@@ -1,5 +1,7 @@
 package com.example.loginapp;
 
+
+
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
@@ -9,6 +11,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class WebFunctions {
+    public interface UserLoginCallback {
+        void LoginResult(boolean isVerified);
+    }
     public static boolean userIsVerified = false;
     public static void addUser(String username, String email, String password) {
         AndroidNetworking.get("https://localhost:3000/users/addUser")
@@ -31,7 +36,7 @@ public class WebFunctions {
                 });
     }
 
-    public static void verifyUser(String username, final String password) {
+    public static void verifyUser(String username, final String password, final UserLoginCallback callback) {
         final String passwordhash = AES.md5(password);
 
         AndroidNetworking.get("https://localhost:3000/users/getData")
@@ -51,8 +56,13 @@ public class WebFunctions {
                             }
                         }
                         if (passwordhash == variable) {
+                            callback.LoginResult(true);
                             userIsVerified = true; 
+                        } else {
+                            callback.LoginResult(false);
+
                         }
+
                     }
 
                     @Override
