@@ -20,7 +20,7 @@ public class WebFunctions {
     public static void addUser(String username, String email, String password) {
         Uri.Builder builder = new Uri.Builder();
         builder.scheme("http")
-                .encodedAuthority("192.168.192.7:3000")
+                .encodedAuthority("aalay.duckdns.org:3000")
                 .appendPath("users")
                 .appendPath("addUser")
                 .appendQueryParameter("username", username)
@@ -88,7 +88,7 @@ public class WebFunctions {
 
         Uri.Builder builder = new Uri.Builder();
         builder.scheme("http")
-                .encodedAuthority("192.168.192.7:3000")
+                .encodedAuthority("aalay.duckdns.org:3000")
                 .appendPath("users")
                 .appendPath("getData")
                 .appendQueryParameter("name", username);
