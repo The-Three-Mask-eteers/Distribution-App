@@ -6,15 +6,6 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     private Button button;
@@ -43,10 +34,13 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
         public void openDonateAMask() {
+            Objects.parameter = "placesThatAcceptDonations";
             Intent intent = new Intent(this, DonateAMask.class);
             startActivity(intent);
+
         }
         public void openCollectAMask() {
+            Objects.parameter = "placesThatGiveDonations";
             Intent intent = new Intent( this, CollectAMask.class);
             startActivity(intent);
         }
